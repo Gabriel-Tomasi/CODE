@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+#include <stdlib.h>
+int main(void) {
+	
+	int funcionarios[6], tempo[6], i, o, amaior, bmaior, cmaior, a, b, c;
+	float as, bs, cs;
+	
+	srand(time(0));
+ 	for ( i = 0; i < 6; i++) {
+ 		funcionarios[i] = rand()%12001;
+ 		printf("Salario do funcionario %i: %i\n", i + 1, funcionarios[i]);
+ 		
+	 }
+	printf("\n..............................\n");
+	printf("\n");
+	for ( o = 0; o < 6; o++) {
+		tempo[o] = rand()%10;
+		printf("Tempo de servico do funcionario %i: %i ano(s)\n", o + 1, tempo[o]);
+	} 
+	printf("\n..............................\n");
+	printf("\n");
+	amaior = tempo[0];
+	a = 0;
+	for (o = 0; o < 6; o++) {
+		if (tempo[o] > amaior) {
+			amaior = tempo[o];
+			a = o; 
+		}
+	}
+	tempo[a] = 0;
+	bmaior = tempo[0];
+	b = 0;
+	for (o = 0; o < 6; o++) {
+		if (tempo[o] < amaior && tempo[o] > bmaior) {
+			bmaior = tempo[o];
+			b = o;
+		} 
+	}
+	tempo[b] = 0;
+	cmaior = tempo[0];
+	c = 0;
+	for (o = 0; o < 6; o++) {
+		if (tempo[o] < amaior && tempo[o] < bmaior && tempo[o] > cmaior) {
+			cmaior = tempo[o];
+			c = o;
+		}
+	}
+ 	printf("Funcionario %i tem o primeiro maior tempo de servico: %i ano(s) || Salario: %i\n", a + 1, amaior, funcionarios[a]); 
+	printf("Funcionario %i tem o segundo maior tempo de servico: %i ano(s) || Salario: %i\n", b + 1, bmaior, funcionarios[b]);
+	printf("Funcionario %i tem o terceiro maior tempo de servico: %i ano(s) || Salario: %i\n", c + 1, cmaior, funcionarios[c]);
+	printf("\n..............................\n");
+	printf("\n");
+	if (funcionarios[a] < 11500) {
+		
+		as = funcionarios[a] * 1.10;
+		
+		printf("O funcionario com o maior tempo de servico recebeu um aumento de 10 por cento e ficou com: %.2f reais\n", as);
+		
+	} else {
+		
+		printf("O funcionario nao recebeu aumento por ultrapassar 11.500 reais de salario.\n");
+		
+	}
+	if (funcionarios[b] < 10500) {
+		
+		bs = funcionarios[b] * 1.08;
+		
+		printf("O funcionario com o segundo maior tempo de servico recebeu um aumento de 8 por cento e ficou com: %.2f reais\n", bs);
+		
+	} else {
+		
+		printf("O funcionario nao recebeu aumento por ultrapassar 10.500 reais de salario.\n");
+	}
+	if (funcionarios[c] < 8500) {
+		
+		cs = funcionarios[c] * 1.05;
+		
+		printf("O funcionario com o terceiro maior tempo de servico recebeu um aumento de 5 por cento e ficou com: %.2f reais\n", cs); 
+		
+	} else {
+		
+		printf("O funcionario nao recebeu aumento por ultrapassar 8.500 reais de salario.\n");
+	}
+	return 0;
+}
