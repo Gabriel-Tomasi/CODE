@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <math.h>
+
+
+int main(void) { //inicio
+	
+float n1, n2, rt, x1, x2, delta, a, b, c;
+char oper, cal, sn;
+int tab, num;
+rt = 0; 
+sn = 's';
+tab = 0;
+delta = 0;
+x1 = 0;
+x2 = 0;
+//entrada de dados
+while (sn == 's' ){
+	printf("Qual servico voce deseja, calculadora[c], tabuada[t], ou esquacao do segundo grau[e]?\n");
+	scanf("%s", &cal);
+	if (cal == 'c') {
+		printf("Insira um numero para comecar:\n");
+		scanf("%f", &n1);
+		printf("Insira outro numero:\n");
+		scanf("%f", &n2);
+		printf("Qual opercao deseja realizar entre os numeros, [+ - * /] ?\n");
+		scanf("%s", &oper);
+		if (oper == '+') {
+			rt = n1 + n2;
+		} else {
+			if (oper == '-') {
+				rt = n1 - n2;
+			} else {
+				if (oper == '*') {
+					rt = n1 * n2;
+				} else {
+					if (oper == '/') {
+						rt = n1 / n2;
+					}
+				}
+			}
+		}
+	printf("O resultado da sua operacao e:\n %.2f", rt);	
+	}
+	if (cal == 't') {
+		printf("Digite um numero para que seja calculado a tabuada:\n");
+			scanf("%d", &num);
+		for (tab = 0; tab <= 10; tab++) {
+			printf("%d x %d = %d\n", num, tab, num*tab);
+		}
+	}
+	if (cal == 'e'){
+		printf("Digite o valor de a:\n");
+		scanf("%f", &a);
+		printf("Digite o valor de b:\n");
+		scanf("%f", &b);
+		printf("Digite o valor de c:\n");
+		scanf("%f", &c);
+		delta = b*b - 4 * a * c;
+		if (delta < 0) {
+			printf("Nao e possivel prosseguir...");
+	    } 	
+			x1 = (-b + sqrt(delta))/2*a;
+			x2 = (-b - sqrt(delta))/2*a;
+			printf("As raizes sao:\nx1 = %.2f\nx2 = %.2f\n", x1, x2);
+	}	
+printf ("Voce desejas repetir algo [S/N]:\n");
+scanf("%s", &sn);
+} while (sn == 's' )
+return 0;
+}
